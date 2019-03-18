@@ -1,3 +1,7 @@
+
+"Utilizado npx create-react-app e npm install --save react-router-dom  = 18/03 - 13:50"
+"utilizado npm install --save axios = 18/03 -17:00 "
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
