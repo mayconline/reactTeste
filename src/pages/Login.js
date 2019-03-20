@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 
 import logo from '../img/logo.svg';
 
+import InputForm from '../components/InputForm';
+
 export default class Login extends Component {
   
   state ={
@@ -28,12 +30,16 @@ export default class Login extends Component {
            <div>
                <img src={logo} alt="logo" height={100} width={100}/>
                 <form onSubmit={this.handleSubmit}>
-                    <label>Nome Usuario: </label>
-                    <input 
+                   <InputForm 
+                    label ="Usuario"
+                    id="usuario"
+                    type="text"
+                    name="usuario"
                     value={this.state.username}
                     onChange={this.handleInputChange}
-                    placeholder="Digite Usuario"
-                    />
+                    placeholder="Entre com seu usuario"
+                   />
+                   
                     <button type="submit">Entrar</button>                
                 </form>
           </div>

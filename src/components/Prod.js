@@ -1,20 +1,22 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
+
+
 
 export default class Prod extends Component{
-    
-
-    
+   
     render(){
 
-        const {titulo, valor, _id} = this.props.prod;
+        const {titulo, descricao, valor, createDate} = this.props.prod;
 
         return (
             <div>
                
                 <h1>{titulo}</h1>
+                <p>{descricao}</p>
                 <h1>{valor}</h1>
-        <Link to={`/produtos/${_id}`}>Selecionar</Link>
+              
+                <span>{createDate}</span>
+        
             
             </div>
         )
