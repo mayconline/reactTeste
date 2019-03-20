@@ -22,7 +22,7 @@ export default class Login extends Component {
 
     localStorage.setItem('@rjs:username', username);
 
-    this.props.history.push('Produtos');
+    this.props.history.push('produtos');
   };
 
     render(){
