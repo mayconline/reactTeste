@@ -2,6 +2,7 @@ import React, {Component, Fragment} from 'react';
 import {Link} from 'react-router-dom';
 
 import api from '../services/api';
+import socket from 'socket.io-client';
 
 import Prod from '../components/Prod';
 import InputForm from '../components/InputForm';
@@ -11,13 +12,35 @@ export default class Produtos extends Component {
         titulo:'',
         descricao:'',
         valor:'',
-        listaProd:[]
+        listaProd:[],
+    
     };
 
     async componentDidMount(){
+        this.subscribeSocket();
+
         const response = await api.get('/produtos');
      
        this.setState({listaProd: response.data})
+    };
+
+    async componentWillUnmount(){
+        this.unsubscribeSocket();
+    }
+
+    unsubscribeSocket =()=>{
+        const io = socket('http://localhost:3000');
+        io.off('cadastro');
+        
+    };
+
+    subscribeSocket =()=>{
+        const io = socket('http://localhost:3000');
+
+        io.on('cadastro', data =>{
+            this.setState({listaProd:[data, ...this.state.listaProd]});
+        })
+       
     };
 
 
