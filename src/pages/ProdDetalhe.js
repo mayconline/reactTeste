@@ -44,8 +44,14 @@ export default class ProdDetalhe extends Component {
         const {produto} = this.state;
         return(
             <div>
-            <Prod prod={produto}/>
-            <button type="button" onClick={this.deletarProd}>deletar</button>
+            <Prod 
+                prod={produto}
+                type="button" 
+                onClick={this.deletarProd}
+                textButton="Deletar"
+            
+            />
+           {/* <button type="button" onClick={this.deletarProd}>deletar</button>*/}
             </div>
         
         );

@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 export default class InputForm extends Component {
   render(){
 
-        const { label, id, type, nome, value, onChange, placeholder} = this.props;
+         const { label, id, type, nome, value, onChange, placeholder} = this.props;
 
       return(
           <div>

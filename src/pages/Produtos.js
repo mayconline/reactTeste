@@ -12,7 +12,8 @@ export default class Produtos extends Component {
         titulo:'',
         descricao:'',
         valor:'',
-        listaProd:[],
+        listaProd:[]
+        
     
     };
 
@@ -83,16 +84,32 @@ export default class Produtos extends Component {
         
      return  this.state.listaProd.map(prod => ( 
             <Fragment key={prod._id}>
-            <Prod prod={prod}/>
+            <Prod prod={prod}
+            type="button" 
+            onClick={this.DetalharProd} 
+            textButton="Selecionar"
+            />
             <Link to={`/produtos/${prod._id}`}>Selecionar</Link>
+
+          
+           
             </Fragment>
             ))
     };
 
+
+    DetalharProd = () => {
+       
+       }
+
+
     render(){
+        
         return (
            
               <div>
+
+                  
                   <form onSubmit={this.handleSubmit}>
                     
                     <InputForm 
@@ -131,7 +148,6 @@ export default class Produtos extends Component {
                 <br></br>
               
               {this.listagemTela()}
-
             
               
               </div>
