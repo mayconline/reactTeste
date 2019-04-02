@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import api from '../services/api';
 
 
-import Prod from '../components/Prod';
+import ListaProd from '../components/ListaProd';
 
 export default class ProdDetalhe extends Component {
 
@@ -39,19 +39,46 @@ export default class ProdDetalhe extends Component {
         
     }
 
+    EditarProd = async ()=>{
+      
+        const {_id} = this.state.produto;
+       
+        try{
+            
+         console.log(_id)
+           //this.props.history.push('/produtos');  
+           // alert('deletado com sucesso');
+        }  
+        catch{
+           // alert('erro ao deletar')
+        }
+        
+        
+    }
+
     render(){
 
         const {produto} = this.state;
         return(
             <div>
-            <Prod 
+            <ListaProd 
                 prod={produto}
-                type="button" 
-                onClick={this.deletarProd}
-                textButton="Deletar"
+                type1="button" 
+                type2="button"
+                onClick1={this.deletarProd}
+                onClick2={this.EditarProd}
+                textButton1="Deletar"
+                textButton2="Editar"
+
+                bt1bgcolor="#ff0000"
+                bt2bgcolor="#0040ff"
+                
+                bt1txtcolor="#ffffff"
+                bt2txtcolor="#ffffff"
+                
             
             />
-           {/* <button type="button" onClick={this.deletarProd}>deletar</button>*/}
+        
             </div>
         
         );

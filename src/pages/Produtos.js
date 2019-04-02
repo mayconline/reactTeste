@@ -1,10 +1,9 @@
 import React, {Component, Fragment} from 'react';
-import {Link} from 'react-router-dom';
 
 import api from '../services/api';
 import socket from 'socket.io-client';
 
-import Prod from '../components/Prod';
+import ListaProd from '../components/ListaProd';
 import InputForm from '../components/InputForm';
 
 export default class Produtos extends Component {
@@ -12,7 +11,8 @@ export default class Produtos extends Component {
         titulo:'',
         descricao:'',
         valor:'',
-        listaProd:[]
+        listaProd:[],
+        userId:''
         
     
     };
@@ -69,7 +69,7 @@ export default class Produtos extends Component {
        };
 
      
-      await api.post('/produtos', obj);
+      await api.post('/produtos/cadastro', obj);
       
        this.setState({
            titulo:'',
@@ -84,22 +84,23 @@ export default class Produtos extends Component {
         
      return  this.state.listaProd.map(prod => ( 
             <Fragment key={prod._id}>
-            <Prod prod={prod}
+            <ListaProd prod={prod}
             type="button" 
-            onClick={this.DetalharProd} 
-            textButton="Selecionar"
+            onClick1={this.DetalharProd} 
+            value1={prod._id}
+            textButton1="Selecionar"
+            bt1bgcolor="#009933"
+            bt1txtcolor="#ffffff"
+            bt2="none"
             />
-            <Link to={`/produtos/${prod._id}`}>Selecionar</Link>
-
-          
-           
             </Fragment>
             ))
     };
 
 
-    DetalharProd = () => {
-       
+    DetalharProd = async (e) => {
+          await  this.setState({userId:e.target.value});
+         await this.props.history.push(`/produtos/${this.state.userId}`)
        }
 
 
