@@ -7,6 +7,8 @@ export const Card = styled.div`
     
     box-shadow: 0px 0.25rem 0.8rem 0 rgba(0,0,0,0.2);
     border-radius:0.5rem;
+
+    
    
 `;
 
@@ -37,7 +39,7 @@ export const CardContent = styled.div`
 
 export const CardFooter = styled.div`
     background-color:#D3D3D3;
-    
+    text-align:center;
     margin: auto;
     padding:1rem;
 

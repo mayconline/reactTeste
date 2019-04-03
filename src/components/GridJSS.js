@@ -15,6 +15,7 @@ export const Container = styled.div`
     &:after{
         clear: both;
     }
+  
 `;
 export const Row = styled.div`
     width:100%;
