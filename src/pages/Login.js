@@ -3,6 +3,8 @@ import React, {Component} from 'react';
 import logo from '../img/logo.svg';
 
 import InputForm from '../components/InputForm';
+import {Button} from '../components/ButtonJSS';
+import {Card, CardHeader, CardFooter, CardContent} from '../components/CardJSS';
 
 export default class Login extends Component {
   
@@ -28,8 +30,15 @@ export default class Login extends Component {
     render(){
        return(
            <div>
-               <img src={logo} alt="logo" height={100} width={100}/>
-                <form onSubmit={this.handleSubmit}>
+             <form onSubmit={this.handleSubmit}>
+             <Card>
+              <CardHeader>
+
+              <img src={logo} alt="logo" height={100} width={100}/>
+              </CardHeader>
+              <CardContent>
+
+              
                    <InputForm 
                     label ="Usuario"
                     id="usuario"
@@ -39,9 +48,37 @@ export default class Login extends Component {
                     onChange={this.handleInputChange}
                     placeholder="Entre com seu usuario"
                    />
+
+                  <InputForm 
+                    label ="Senha"
+                    id="senha"
+                    type="password"
+                    name="senha"
+                    value={this.state.username}
+                    onChange={this.handleInputChange}
+                    placeholder="Entre com a senha"
+                   /> 
+
                    
-                    <button type="submit">Entrar</button>                
-                </form>
+                                   
+               
+              </CardContent>
+              <CardFooter>
+              <Button
+                   bt1bgcolor='blue'
+                   bt1txtcolor='white'
+                   type='submit'  
+                >
+                   Entrar
+                   </Button>
+                   
+              
+              </CardFooter>
+
+             </Card>
+
+             </form>
+                
           </div>
        );
     };

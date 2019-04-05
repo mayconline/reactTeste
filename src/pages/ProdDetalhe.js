@@ -3,7 +3,7 @@ import api from '../services/api';
 
 
 import ListaProd from '../components/ListaProd';
-import {ProdDetalheJSS} from '../components/ProdDetalheJSS';
+
 
 export default class ProdDetalhe extends Component {
 
@@ -65,7 +65,7 @@ export default class ProdDetalhe extends Component {
 
             <Fragment>
 
-<ProdDetalheJSS>
+
          
          <ListaProd 
              prod={produto}
@@ -86,7 +86,7 @@ export default class ProdDetalhe extends Component {
          />
      
      
-         </ProdDetalheJSS>
+      
             </Fragment>
            
         

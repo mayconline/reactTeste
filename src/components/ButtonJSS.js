@@ -9,8 +9,8 @@ export const Button = styled.button`
    width:8rem; 
    border:none;
    margin: 0 0.25rem;
+   cursor:pointer;
    
-  
 
    background-color:${props => props.bt1bgcolor || props.bt2bgcolor};
    color:${props => props.bt1txtcolor || props.bt2txtcolor};

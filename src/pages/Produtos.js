@@ -6,6 +6,8 @@ import socket from 'socket.io-client';
 import ListaProd from '../components/ListaProd';
 import Menu from '../components/menu/Menu';
 
+
+
 export default class Produtos extends Component {
     state={
         
@@ -48,7 +50,8 @@ export default class Produtos extends Component {
         
      return  this.state.listaProd.map(prod => ( 
             <Fragment key={prod._id}>
-            <ListaProd prod={prod}
+                
+                    <ListaProd prod={prod}
             type="button" 
             onClick1={this.DetalharProd} 
             value1={prod._id}
@@ -57,6 +60,7 @@ export default class Produtos extends Component {
             bt1txtcolor="#ffffff"
             bt2="none"
             />
+  
             </Fragment>
             ))
     };
@@ -73,8 +77,9 @@ export default class Produtos extends Component {
         return (
             <Fragment>
                 <Menu/>
-
+         
                  {this.listagemTela()}
+                
             </Fragment>    
         );
     }

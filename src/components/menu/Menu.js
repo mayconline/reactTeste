@@ -7,10 +7,12 @@ export default class Menu extends Component {
       return(
             <Fragment>
         <MenuJSS>
+        <header>ProdSite</header>     
         <ul>
             <li><Link to="/">Login</Link></li>
             <li><Link to="/produtos">Produtos</Link></li>
-            <li><Link to="/produtos/cadastro">Cadastrar</Link></li>         
+            <li><Link to="/produtos/cadastro">Cadastrar</Link></li>     
+               
         </ul>
         </MenuJSS>
             </Fragment>

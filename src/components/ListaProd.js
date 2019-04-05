@@ -19,12 +19,18 @@ export default class Prod extends Component{
                 bt1, bt2} = this.props
         
         return (
-            <Container>
-                <Row>
-                    <Col col='12'> 
+      
+                <Container>
+
+                    <Row>
+                        <Col col='12'>
+
                         <Card>
                             <CardHeader>
-                                {titulo} <span>{createDate}</span> 
+                            <h1>{titulo}</h1>
+                            
+                               <span> Data: {createDate}</span> 
+                               
                             </CardHeader>
                             <CardContent>
                                 <p>descricao: {descricao}</p>
@@ -54,9 +60,13 @@ export default class Prod extends Component{
                             </Button>
                             </CardFooter>
                         </Card>
-                    </Col>
-                </Row>
-            </Container>
+                 
+                        </Col>
+                    </Row>
+
+                </Container>
+                   
+                       
         )
     }
 }

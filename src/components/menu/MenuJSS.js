@@ -2,19 +2,26 @@ import styled from 'styled-components';
 
 export const MenuJSS = styled.div`
     
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    background-color: #333;
+   
+
    ul {
   list-style: none;
   margin: 0;
   padding: 0;
-  overflow: hidden;
-  background-color: #333;
+  
+  
   display:flex;
-  flex-wrap:wrap;
+  justify-content:center;
+  flex-wrap:wrap
 }
 
 li {
   display:flex;
-  justify-content:space-between;
+  justify-content:center;
   flex-wrap:wrap;
   
 }
@@ -28,6 +35,17 @@ li a {
 }
 
 li a:hover {
-  background-color: #111;
+  background-color: #F0F;
+  color:#000;
 }
+
+  header{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    padding:14px 16px;
+    color: white;
+  }
+
+
 `;
