@@ -12,14 +12,16 @@ export default class Produtos extends Component {
     state={
         
         listaProd:[],
-        userId:''
+        prodId:''
  
     };
 
     async componentDidMount(){
         this.subscribeSocket();
 
-        const response = await api.get('/produtos');
+        const token = localStorage.getItem('@userToken')
+        const headers ={'authorization':token}
+        const response = await api.get('/produtos', {headers});
      
        this.setState({listaProd: response.data})
     };
@@ -67,8 +69,8 @@ export default class Produtos extends Component {
 
 
     DetalharProd = async (e) => {
-          await  this.setState({userId:e.target.value});
-         await this.props.history.push(`/produtos/${this.state.userId}`)
+          await  this.setState({prodId:e.target.value});
+         await this.props.history.push(`/produtos/${this.state.prodId}`)
        }
 
 

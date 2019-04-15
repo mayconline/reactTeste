@@ -3,6 +3,9 @@ import styled from 'styled-components';
 
 export const Card = styled.div`
 
+    height:100%;
+    
+    
     display:flex;
     flex-direction:column;   
     justify-content:center; 
@@ -39,7 +42,7 @@ export const CardHeader = styled.div`
         }
        h1{
             font-size:1.5rem;
-            padding:0.5rem 
+            padding:0.5rem; 
             display:flex;
             justify-content:center;
             flex-wrap:wrap;
