@@ -4,7 +4,7 @@ import api from '../services/api';
 import socket from 'socket.io-client';
 
 import ListaProd from '../components/ListaProd';
-import Menu from '../components/menu/Menu';
+import Menu from './Menu';
 
 
 
@@ -13,6 +13,7 @@ export default class Produtos extends Component {
         
         listaProd:[],
         prodId:''
+        
  
     };
 
@@ -74,7 +75,12 @@ export default class Produtos extends Component {
        }
 
 
+
+
+
     render(){
+
+        
         
         return (
             <Fragment>

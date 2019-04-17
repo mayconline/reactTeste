@@ -8,20 +8,26 @@ export default class InputForm extends Component {
          const { label, id, type, nome, value, onChange, placeholder} = this.props;
 
       return(
-          <InputFormJSS>
-         
-         
-              <label htmlFor={id}> {label} </label>
-              <input id={id} 
-              type={type} 
-              name={nome} 
-              value={value} 
-              onChange={onChange}
-              placeholder={placeholder}
-              /> 
-
        
-          </InputFormJSS>
+         <div>
+  <InputFormJSS>
+  
+<label htmlFor={id}> {label} </label>
+<input id={id} 
+type={type} 
+name={nome} 
+value={value} 
+onChange={onChange}
+placeholder={placeholder}
+/> 
+</InputFormJSS>
+</div>
+        
+         
+         
+             
+       
+         
       )
   }
     

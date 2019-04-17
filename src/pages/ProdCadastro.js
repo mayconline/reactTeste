@@ -2,7 +2,7 @@ import React, {Component, Fragment} from 'react';
 import api from '../services/api';
 import InputForm from '../components/InputForm';
 
-import Menu from '../components/menu/Menu';
+import Menu from './Menu';
 
 
 export default class ProdCadastro extends Component {
