@@ -1,15 +1,17 @@
 import React, {Component} from 'react';
-import {Container,Row,Col} from './GridJSS';
+
 import {Card, CardHeader, CardContent, CardFooter} from './CardJSS';
 import {Button} from './ButtonJSS';
 
-
+import {distanceInWords} from 'date-fns';
+import pt from 'date-fns/locale/pt';
 
 export default class Prod extends Component{
    
+
     render(){
 
-        const {titulo, descricao, valor, createDate} = this.props.prod;
+        const {titulo, descricao, valor, createdAt} = this.props.prod;
         const { type1,type2,
                 onClick1, onClick2,
                 textButton1, textButton2, 
@@ -18,18 +20,16 @@ export default class Prod extends Component{
                 bt2bgcolor, bt2txtcolor, 
                 bt1, bt2} = this.props
         
+       
+
         return (
       
-                <Container>
-
-                    <Row>
-                        <Col col='12'>
-
                         <Card>
                             <CardHeader>
                             <h1>{titulo}</h1>
-                            
-                               <span> Data: {createDate}</span> 
+
+                                                       
+                            <span> Há {distanceInWords(createdAt, new Date(), {locale:pt})} </span>
                                
                             </CardHeader>
                             <CardContent>
@@ -61,24 +61,9 @@ export default class Prod extends Component{
                             </CardFooter>
                         </Card>
                  
-                        </Col>
-                    </Row>
-
-                </Container>
                    
                        
         )
     }
 }
 
-
-/*<div>
-               
-                <h1>{titulo}</h1>
-                <p>{descricao}</p>
-                <h1>{valor}</h1>
-              
-                <span>{createDate}</span>
-        
-            
-            </div>*/

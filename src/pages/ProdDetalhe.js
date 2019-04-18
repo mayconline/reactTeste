@@ -11,6 +11,7 @@ export default class ProdDetalhe extends Component {
         produto:{}
         
     }
+    
 
     async componentDidMount(){
         const {id} = this.props.match.params;

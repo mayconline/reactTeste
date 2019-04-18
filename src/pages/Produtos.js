@@ -6,6 +6,7 @@ import socket from 'socket.io-client';
 import ListaProd from '../components/ListaProd';
 import Menu from './Menu';
 
+import {Container, Col, Row} from '../components/GridJSS';
 
 
 export default class Produtos extends Component {
@@ -48,25 +49,25 @@ export default class Produtos extends Component {
 
 
 
-    
-   listagemTela = ()=>{
+    listagemTela = ()=>{
         
-     return  this.state.listaProd.map(prod => ( 
-            <Fragment key={prod._id}>
-                
-                    <ListaProd prod={prod}
-            type="button" 
-            onClick1={this.DetalharProd} 
-            value1={prod._id}
-            textButton1="Selecionar"
-            bt1bgcolor="#009933"
-            bt1txtcolor="#ffffff"
-            bt2="none"
-            />
-  
-            </Fragment>
-            ))
-    };
+        return  this.state.listaProd.map(prod => ( 
+               <Fragment key={prod._id} >   
+                         <ListaProd prod={prod}
+               type="button" 
+               onClick1={this.DetalharProd} 
+               value1={prod._id}
+               textButton1="Selecionar"
+               bt1bgcolor="#009933"
+               bt1txtcolor="#ffffff"
+               bt2="none"
+               />
+               </Fragment>
+               ))
+       };
+   
+   
+
 
 
     DetalharProd = async (e) => {
@@ -84,10 +85,19 @@ export default class Produtos extends Component {
         
         return (
             <Fragment>
-                <Menu/>
-         
-                 {this.listagemTela()}
-                
+                <Container>
+                    <Row>
+                        <Col col='12'>
+                             <Menu/>
+                        </Col>
+                    </Row>
+                    <Row>  
+                        <Col col='3' />
+                        <Col col='6'>
+                            {this.listagemTela()}
+                        </Col>    
+                     </Row>
+                </Container>      
             </Fragment>    
         );
     }
