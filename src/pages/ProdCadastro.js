@@ -38,7 +38,7 @@ export default class ProdCadastro extends Component {
        };
 
      
-      await api.post('/produtos/cadastro', obj);
+     const res = await api.post('/produtos/cadastro', obj);
       
        this.setState({
            titulo:'',
@@ -46,7 +46,7 @@ export default class ProdCadastro extends Component {
            valor:''
        })
 
-       await this.props.history.push('/produtos');
+       await this.props.history.push(`/produtos/${res.data._id}`);
        
     
     };

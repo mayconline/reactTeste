@@ -58,6 +58,7 @@ setMsgErro =(e) =>{
         return ;
       } else this.props.history.push('produtos');
 
+      
     }
     catch(e){
       this.setMsgErro('Erro ao logar')

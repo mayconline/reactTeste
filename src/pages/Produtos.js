@@ -26,6 +26,7 @@ export default class Produtos extends Component {
         const response = await api.get('/produtos', {headers});
      
        this.setState({listaProd: response.data})
+       
     };
 
     async componentWillUnmount(){
@@ -85,6 +86,7 @@ export default class Produtos extends Component {
         
         return (
             <Fragment>
+
                 <Container>
                     <Row>
                         <Col col='12'>

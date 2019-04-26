@@ -1,6 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import api from '../services/api';
 
+import Dropzone from 'react-dropzone'
 
 import ListaProd from '../components/ListaProd';
 
@@ -9,6 +10,8 @@ export default class ProdDetalhe extends Component {
 
     state ={
         produto:{}
+        
+        
         
     }
     
@@ -21,6 +24,9 @@ export default class ProdDetalhe extends Component {
        
         
         this.setState({ produto: response.data});
+
+        
+
 
     }
 
@@ -58,18 +64,47 @@ export default class ProdDetalhe extends Component {
         
     }
 
-    render(){
+    inserirFoto = async (files) =>{
+        const {_id} = this.state.produto;
 
+        for( let file of files){
+
+            //cria um formulario
+            const data = new FormData();
+            data.append('file', file)
+            //envia os dados para a url
+
+     await api.post(`/produtos/cadastro/${_id}/fotos`, data)
+       
+
+        }
+     
+    }
+  
+
+    render(){
+        
+        
         const {produto} = this.state;
+   
         return(
 
 
             <Fragment>
 
+           <Dropzone onDropAccepted={this.inserirFoto}>
+                 {({getRootProps, getInputProps})=>(
+                     <div className='upload'{...getRootProps()}>
+                        <input {...getInputProps()}/>
+                        <p>Arraste arquivos aqui</p>
+                     </div>
+                 )}  
+            </Dropzone> 
 
          
          <ListaProd 
              prod={produto}
+           
              type1="button" 
              type2="button"
              onClick1={this.deletarProd}
@@ -86,6 +121,7 @@ export default class ProdDetalhe extends Component {
          
          />
      
+    
      
       
             </Fragment>

@@ -9,9 +9,16 @@ import pt from 'date-fns/locale/pt';
 export default class Prod extends Component{
    
 
-    render(){
+   /* listagemTela = ()=>{
+        return this.props.prod.fotos.map(foto =>(
+            foto.url
+        ))
+   };*/
 
-        const {titulo, descricao, valor, createdAt} = this.props.prod;
+
+    render(){
+           
+        const {titulo, descricao, valor, createdAt, fotos} = this.props.prod;
         const { type1,type2,
                 onClick1, onClick2,
                 textButton1, textButton2, 
@@ -19,8 +26,10 @@ export default class Prod extends Component{
                 bt1bgcolor, bt1txtcolor,
                 bt2bgcolor, bt2txtcolor, 
                 bt1, bt2} = this.props
-        
-       
+
+            
+           
+                
 
         return (
       
@@ -33,10 +42,28 @@ export default class Prod extends Component{
                                
                             </CardHeader>
                             <CardContent>
-                                <p>descricao: {descricao}</p>
-                                <p>Valor: {valor} </p>   
+                                   
+
+                              {fotos &&
+                                    fotos.map(foto => (
+                                        <ul key={foto._id}>
+                                            <li >
+                                            <img  src={ foto.url} alt={foto.name} width={300}></img> 
+                                            </li>
+
+                                        </ul>
+                                      
+                                    ))
+                                        
+                                        }  
+              
+                            
+                         
                             </CardContent>
                             <CardFooter>
+
+                            <p>descricao: {descricao}</p>
+                                <p>Valor: {valor} </p>
                             <Button
                                 bt1bgcolor={bt1bgcolor}
                                 bt1txtcolor={bt1txtcolor}

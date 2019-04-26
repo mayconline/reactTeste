@@ -6,6 +6,8 @@
 "Utilizado npm install --save styled-components - 01/04 - 12:22"
 "utilizado npm install date-fns --save - 18/04 - 10:20"
 
+"npm install --save react-dropzone"
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
