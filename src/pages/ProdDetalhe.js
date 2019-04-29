@@ -1,7 +1,9 @@
 import React, {Component, Fragment} from 'react';
 import api from '../services/api';
 
-import Dropzone from 'react-dropzone'
+import Upload from '../components/Upload';
+
+
 
 import ListaProd from '../components/ListaProd';
 
@@ -64,23 +66,27 @@ export default class ProdDetalhe extends Component {
         
     }
 
+
     inserirFoto = async (files) =>{
-        const {_id} = this.state.produto;
-
-        for( let file of files){
-
-            //cria um formulario
-            const data = new FormData();
-            data.append('file', file)
-            //envia os dados para a url
-
-     await api.post(`/produtos/cadastro/${_id}/fotos`, data)
-       
-
-        }
+    
+       const {_id} = this.state.produto;
      
-    }
-  
+         console.log(files)
+     
+            for( let file of files){
+     
+                 //cria um formulario
+                 const data = new FormData();
+                 data.append('file', file)
+                 //envia os dados para a url
+     
+          await api.post(`/produtos/cadastro/${_id}/fotos`, data)
+            
+     
+             } 
+          
+         }
+    
 
     render(){
         
@@ -92,17 +98,11 @@ export default class ProdDetalhe extends Component {
 
             <Fragment>
 
-           <Dropzone onDropAccepted={this.inserirFoto}>
-                 {({getRootProps, getInputProps})=>(
-                     <div className='upload'{...getRootProps()}>
-                        <input {...getInputProps()}/>
-                        <p>Arraste arquivos aqui</p>
-                     </div>
-                 )}  
-            </Dropzone> 
-
+          
+            <Upload  onUpload={this.inserirFoto}/>
+          
          
-         <ListaProd 
+        {/* <ListaProd 
              prod={produto}
            
              type1="button" 
@@ -119,7 +119,7 @@ export default class ProdDetalhe extends Component {
              bt2txtcolor="#ffffff"
              
          
-         />
+         />*/} 
      
     
      

@@ -8,6 +8,9 @@
 
 "npm install --save react-dropzone"
 
+"npm install --save react-circular-progressbar"
+"npm i react-icons"
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
