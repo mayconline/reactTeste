@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import {Card, CardHeader, CardContent, CardFooter} from './CardJSS';
+import {Card, CardHeader, CardContent, CardFooter, Content} from './CardJSS';
 import {Button} from './ButtonJSS';
 
 import {distanceInWords} from 'date-fns';
@@ -34,6 +34,8 @@ export default class Prod extends Component{
         return (
       
                         <Card>
+                            <Content>
+  
                             <CardHeader>
                             <h1>{titulo}</h1>
 
@@ -43,28 +45,34 @@ export default class Prod extends Component{
                             </CardHeader>
                             <CardContent>
                                    
-
+                            <ul >
                               {fotos &&
                                     fotos.map(foto => (
-                                        <ul key={foto._id}>
-                                            <li >
-                                            <img  src={ foto.url} alt={foto.name} width={400}></img> 
+                                      
+                                            <li key={foto._id}>
+                                            <img  src={foto.url} alt={foto.name} ></img> 
                                             </li>
 
-                                        </ul>
+                                       
                                       
                                     ))
                                         
                                         }  
+                                         </ul>
               
                              
                          
                             </CardContent>
                             <CardFooter>
 
-                            <p>descricao: {descricao}</p>
-                                <p>Valor: {valor} </p>
-                            <Button
+                                <div> 
+                                <strong>descricao: {descricao}</strong>
+                                <span>Valor: {valor} </span>
+                                </div>
+
+                           <div>
+
+                           <Button
                                 bt1bgcolor={bt1bgcolor}
                                 bt1txtcolor={bt1txtcolor}
                                 type={type1}
@@ -85,7 +93,10 @@ export default class Prod extends Component{
                              >
                                 {textButton2}
                             </Button>
+                           </div>
+                           
                             </CardFooter>
+                            </Content>
                         </Card>
                  
                    

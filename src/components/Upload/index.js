@@ -1,7 +1,7 @@
 import React, {Component, Fragment} from 'react';
 
 import Dropzone from 'react-dropzone'
-import api from '../../services/api';
+
 import UploadPreview from '../UploadPreview';
 
 import {DropContainer , UploadMessage , Container, Content} from './styled';

@@ -90,7 +90,7 @@ export default class ProdDetalhe extends Component {
 
         this.setState({
             uploadedFiles:this.state.uploadedFiles.filter(file=>
-                file.id !=id)
+                file.id!==id)
         })
     }
 
@@ -112,6 +112,7 @@ export default class ProdDetalhe extends Component {
     }
 
 
+    //cria um novo array add aos dados da foto novos campos//
     handleUpload = (files) => {
         const uploadedFiles = files.map(file=>({
             file,
@@ -132,32 +133,37 @@ export default class ProdDetalhe extends Component {
             
         });
 
-      
+      //pra cada arquivo, recebe uma função que vai enviar a foto pro server storage//
         uploadedFiles.forEach(this.proccessUpload);
 
     }
 
 
+    //funcao que recebe o id do item do array e atualiza com os dados recebidos //
     updateFile =(id, data) =>{
         this.setState({
             uploadedFiles: this.state.uploadedFiles.map( uploadFile =>{
-                return id == uploadFile.id ? { ...uploadFile, ...data}: uploadFile
+                return id === uploadFile.id ? { ...uploadFile, ...data}: uploadFile
             })
         
         })
     };
 
+    //metodo de envio de foto pro server storage //
     proccessUpload = (uploadFile)=>{
 
         const {_id} = this.state.produto;
 
+            //cria um from e add o campo file contendo os dados do envio
         const data = new FormData();
-        data.append('file', uploadFile.file, uploadFile.name)
+            data.append('file', uploadFile.file, uploadFile.name);
 
             api.post(`/produtos/cadastro/${_id}/fotos`, data, {
+                //metodo que retorna o progress de upload e seta ele na const progress //
                 onUploadProgress: e =>{
                     const progress = parseInt(Math.round((e.loaded)*100)/e.total)
                        
+                    //chama a função que seta o estado do array uploadedFiles //
                 this.updateFile(uploadFile.id, {
                     progress
                 } )
@@ -178,6 +184,9 @@ export default class ProdDetalhe extends Component {
                     })
                 })
     }
+
+
+
 
 
     /*
@@ -206,7 +215,7 @@ export default class ProdDetalhe extends Component {
         
         
         const {produto, uploadedFiles} = this.state;
-        ;
+        
 
         
    
@@ -222,7 +231,7 @@ export default class ProdDetalhe extends Component {
             />
           
          
-        <ListaProd 
+       <ListaProd 
              prod={produto}
            
              type1="button" 
