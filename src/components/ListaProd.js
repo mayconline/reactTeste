@@ -48,7 +48,7 @@ export default class Prod extends Component{
                                     fotos.map(foto => (
                                         <ul key={foto._id}>
                                             <li >
-                                            <img  src={ foto.url} alt={foto.name} width={300}></img> 
+                                            <img  src={ foto.url} alt={foto.name} width={400}></img> 
                                             </li>
 
                                         </ul>
@@ -57,7 +57,7 @@ export default class Prod extends Component{
                                         
                                         }  
               
-                            
+                             
                          
                             </CardContent>
                             <CardFooter>

@@ -25,7 +25,7 @@ export default class Upload extends Component {
 
     render(){
 
-        const {onUpload} = this.props
+        const {onUpload, files, onDelete} = this.props
         return (
             <Fragment>
                 <Container>
@@ -48,9 +48,12 @@ export default class Upload extends Component {
                  )}  
             </Dropzone> 
             
-            <UploadPreview />
+            <UploadPreview files={files}
+                onDelete={onDelete}
+            />
             
                 </Content>
+               
              
             </Container>
 

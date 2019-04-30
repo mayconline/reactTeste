@@ -11,6 +11,11 @@
 "npm install --save react-circular-progressbar"
 "npm i react-icons"
 
+"para teste de preview lodash para gerar um id automatico previo
+/ npm i --save lodash"
+
+"npm install filesize - para converter pra mb o tamanho doarquivo"
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

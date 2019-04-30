@@ -2,8 +2,10 @@ import React, {Component, Fragment} from 'react';
 import api from '../services/api';
 
 import Upload from '../components/Upload';
+//import socket from 'socket.io-client';
 
-
+import {uniqueId} from 'lodash';
+import filesize from 'filesize';
 
 import ListaProd from '../components/ListaProd';
 
@@ -11,7 +13,9 @@ import ListaProd from '../components/ListaProd';
 export default class ProdDetalhe extends Component {
 
     state ={
-        produto:{}
+        produto:{},
+       // fotos:[],
+        uploadedFiles:[]
         
         
         
@@ -19,6 +23,9 @@ export default class ProdDetalhe extends Component {
     
 
     async componentDidMount(){
+
+      //  this.subscribeSocket();
+
         const {id} = this.props.match.params;
      
 
@@ -26,11 +33,40 @@ export default class ProdDetalhe extends Component {
        
         
         this.setState({ produto: response.data});
+        //this.setState({fotos:response.data.fotos})
 
-        
+       this.setState({
+           uploadedFiles: response.data.fotos.map(file=>({
+               id:file._id,
+               name:file.name,
+               readableSize:filesize(file.size),
+               preview:file.url,
+               uploaded:true,
+               url:file.url
+
+           }))
+       });
 
 
     }
+
+    componentWillMount(){
+        this.state.uploadedFiles.forEach(file =>
+            URL.revokeObjectURL(file.preview));
+    }
+
+
+
+/*
+    subscribeSocket =()=>{
+        const io = socket('http://localhost:3000');
+
+        io.on('cadFotos', data =>{
+            this.setState({fotos:[data, ...this.state.fotos]});
+        })
+       
+    };*/
+
 
     deletarProd = async ()=>{
       
@@ -47,6 +83,15 @@ export default class ProdDetalhe extends Component {
         }
         
         
+    }
+
+    deletarFoto = async (id)=>{
+        await api.delete(`produtos/fotos/${id}`);
+
+        this.setState({
+            uploadedFiles:this.state.uploadedFiles.filter(file=>
+                file.id !=id)
+        })
     }
 
     EditarProd = async ()=>{
@@ -67,6 +112,75 @@ export default class ProdDetalhe extends Component {
     }
 
 
+    handleUpload = (files) => {
+        const uploadedFiles = files.map(file=>({
+            file,
+            id:uniqueId(),
+            name:file.name,
+            readableSize:filesize(file.size),
+            preview:URL.createObjectURL(file),
+            progress:0,
+            uploaded:false,
+            error:false,
+            url:null
+
+        }))
+
+
+        this.setState({
+            uploadedFiles:this.state.uploadedFiles.concat(uploadedFiles)
+            
+        });
+
+      
+        uploadedFiles.forEach(this.proccessUpload);
+
+    }
+
+
+    updateFile =(id, data) =>{
+        this.setState({
+            uploadedFiles: this.state.uploadedFiles.map( uploadFile =>{
+                return id == uploadFile.id ? { ...uploadFile, ...data}: uploadFile
+            })
+        
+        })
+    };
+
+    proccessUpload = (uploadFile)=>{
+
+        const {_id} = this.state.produto;
+
+        const data = new FormData();
+        data.append('file', uploadFile.file, uploadFile.name)
+
+            api.post(`/produtos/cadastro/${_id}/fotos`, data, {
+                onUploadProgress: e =>{
+                    const progress = parseInt(Math.round((e.loaded)*100)/e.total)
+                       
+                this.updateFile(uploadFile.id, {
+                    progress
+                } )
+                }
+            })
+                .then((res)=>{
+                    this.updateFile(uploadFile.id,{
+                        uploaded:true,
+                        id:res.data._id,
+                        url:res.data.url,
+                        readableSize:filesize(res.data.size)
+
+                    })
+                })
+                .catch(()=>{
+                    this.updateFile(uploadFile.id,{
+                        error:true
+                    })
+                })
+    }
+
+
+    /*
     inserirFoto = async (files) =>{
     
        const {_id} = this.state.produto;
@@ -85,13 +199,16 @@ export default class ProdDetalhe extends Component {
      
              } 
           
-         }
+         } */
     
 
     render(){
         
         
-        const {produto} = this.state;
+        const {produto, uploadedFiles} = this.state;
+        ;
+
+        
    
         return(
 
@@ -99,10 +216,13 @@ export default class ProdDetalhe extends Component {
             <Fragment>
 
           
-            <Upload  onUpload={this.inserirFoto}/>
+            <Upload  onUpload={this.handleUpload}
+                files={uploadedFiles}
+                onDelete={this.deletarFoto}
+            />
           
          
-        {/* <ListaProd 
+        <ListaProd 
              prod={produto}
            
              type1="button" 
@@ -119,7 +239,7 @@ export default class ProdDetalhe extends Component {
              bt2txtcolor="#ffffff"
              
          
-         />*/} 
+         />
      
     
      

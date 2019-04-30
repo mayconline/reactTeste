@@ -8,44 +8,65 @@ import{MdCheckCircle, MdError, MdLink} from 'react-icons/md';
 
 import {Container, FileInfo, Preview} from './styled';
 
-const UploadPreview =()=>
+const UploadPreview =({files, onDelete})=>
     <Container>
-        <li>            
-            <FileInfo>
-                <Preview src='https://res.cloudinary.com/apinodeteste/image/upload/v1556313367/fotos/87c6f513392ec29734b43c31ff23c07b-teste4.jpg.jpg'/>
+    
+         {!!files.length &&
+                  files.map(foto => (
+        <li key={foto.id}>            
+           
+        <FileInfo >
+                            
+                <Preview src={foto.preview}/>                       
+               
                 <div>
-                    <strong>profile.png</strong>
-                    <span>64kb
-                        <button onClick={()=>{}}>Excluir</button>
+                    <strong>{foto.name}</strong>
+                    <span>{foto.readableSize}
+
+                    {!!foto.url &&(
+                        <button onClick={()=>{onDelete(foto.id)}}>Excluir</button>
+                    )}
+                        
                     </span>
                 </div>
              
             </FileInfo>
+                         
 
             <div>
-                <CircularProgressbar 
+                {!foto.uploaded && !foto.error && (
+                    <CircularProgressbar 
                     styles={{
                         root:{width:24},
                         path:{stroke:'#7159c1'}
                     }}
                     strokeWidth={10}
-                    percentage={60}   
+                    percentage={foto.progress}   
      
                 />
+                )}
 
-                <a href='https://res.cloudinary.com/apinodeteste/image/upload/v1556313367/fotos/87c6f513392ec29734b43c31ff23c07b-teste4.jpg.jpg'
+                {foto.url &&(
+                    <a href={foto.url}
                     target='_blank'
                     rel='noopener noreferrer'
                     >
                     <MdLink style={{marginRight:8}}  size={24} color='#222'/>
                     </a>
+                )}
                     
-                    <MdCheckCircle size={24} color='#78e5d5'/>
-                    <MdError size={24} color='#e57878'/>
+                 {foto.uploaded &&(
+                     <MdCheckCircle size={24} color='#78e5d5'/>
+                 )}  
+
+                  {foto.error &&(
+                       <MdError size={24} color='#e57878'/>
+                  )} 
 
 
             </div>
         </li>
+               ))  }
 
     </Container>;
 
