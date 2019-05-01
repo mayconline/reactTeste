@@ -19,14 +19,14 @@ export default class Prod extends Component{
 
     render(){
            
-        const {titulo, descricao, valor, createdAt, fotos} = this.props.prod;
+        const {titulo, descricao, valor, createdAt, } = this.props.prod;
         const { type1,type2,
                 onClick1, onClick2,
                 textButton1, textButton2, 
                 value1, value2,
                 bt1bgcolor, bt1txtcolor,
                 bt2bgcolor, bt2txtcolor, 
-                bt1, bt2} = this.props
+                bt1, bt2, fotos} = this.props
 
             
         const settings = {

@@ -7,6 +7,7 @@ import ListaProd from '../components/ListaProd';
 import Menu from './Menu';
 
 import {Container, Col, Row} from '../components/GridJSS';
+import {Title} from '../components/CardJSS';
 
 
 export default class Produtos extends Component {
@@ -62,6 +63,7 @@ export default class Produtos extends Component {
                bt1bgcolor="#009933"
                bt1txtcolor="#ffffff"
                bt2="none"
+               fotos={prod.fotos}
                />
                </Fragment>
                ))
@@ -86,11 +88,12 @@ export default class Produtos extends Component {
         
         return (
             <Fragment>
-
+   <Menu/>
+   <Title>PRODUTOS</Title>
                 <Container>
                     <Row>
                         <Col col='12'>
-                             <Menu/>
+                      
                         </Col>
                     </Row>
                     <Row>  

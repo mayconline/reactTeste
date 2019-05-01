@@ -19,6 +19,9 @@
 "utilizado react-slick para slides de fotos -
 https://react-slick.neostack.com/docs/example/custom-slides "
 
+"utilizado https://www.npmjs.com/package/react-loading -
+para loading "
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

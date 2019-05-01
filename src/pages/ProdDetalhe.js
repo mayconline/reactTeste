@@ -2,30 +2,34 @@ import React, {Component, Fragment} from 'react';
 import api from '../services/api';
 
 import Upload from '../components/Upload';
-//import socket from 'socket.io-client';
+import socket from 'socket.io-client';
 
 import {uniqueId} from 'lodash';
 import filesize from 'filesize';
 
 import ListaProd from '../components/ListaProd';
+import Menu from './Menu';
+
+import ReactLoading from 'react-loading';
 
 
 export default class ProdDetalhe extends Component {
 
     state ={
         produto:{},
-       // fotos:[],
-        uploadedFiles:[]
-        
-        
+        fotos:[],
+        uploadedFiles:[],
+        loading:false,
+    
         
     }
     
 
     async componentDidMount(){
 
-      //  this.subscribeSocket();
+       this.subscribeSocket();
 
+    
         const {id} = this.props.match.params;
      
 
@@ -33,7 +37,7 @@ export default class ProdDetalhe extends Component {
        
         
         this.setState({ produto: response.data});
-        //this.setState({fotos:response.data.fotos})
+        this.setState({fotos:response.data.fotos})
 
        this.setState({
            uploadedFiles: response.data.fotos.map(file=>({
@@ -53,39 +57,54 @@ export default class ProdDetalhe extends Component {
     componentWillMount(){
         this.state.uploadedFiles.forEach(file =>
             URL.revokeObjectURL(file.preview));
+
+            const io = socket('http://localhost:3000');
+            io.off('cadFotos');    
     }
 
 
 
-/*
+
     subscribeSocket =()=>{
         const io = socket('http://localhost:3000');
 
         io.on('cadFotos', data =>{
             this.setState({fotos:[data, ...this.state.fotos]});
-        })
+        }) 
        
-    };*/
+    };
 
 
     deletarProd = async ()=>{
       
         const {_id} = this.state.produto;
+
+      await  this.setState({loading:true});
        
         try{
             await api.delete(`/produtos/${_id}`);
+
+
+
+            await this.setState({loading:false});
          
-            this.props.history.push('/produtos');  
-            alert('deletado com sucesso');
+             await  this.props.history.push('/produtos');  
+            
+
+            
         }  
         catch{
-            alert('erro ao deletar')
+          
+
+         await   this.setState({loading:false});
         }
         
         
     }
 
     deletarFoto = async (id)=>{
+        
+
         await api.delete(`produtos/fotos/${id}`);
 
         this.setState({
@@ -147,10 +166,14 @@ export default class ProdDetalhe extends Component {
             })
         
         })
+
+        
     };
 
     //metodo de envio de foto pro server storage //
     proccessUpload = (uploadFile)=>{
+
+        this.setState({loading:true})
 
         const {_id} = this.state.produto;
 
@@ -162,6 +185,8 @@ export default class ProdDetalhe extends Component {
                 //metodo que retorna o progress de upload e seta ele na const progress //
                 onUploadProgress: e =>{
                     const progress = parseInt(Math.round((e.loaded)*100)/e.total)
+
+                   
                        
                     //chama a função que seta o estado do array uploadedFiles //
                 this.updateFile(uploadFile.id, {
@@ -176,12 +201,17 @@ export default class ProdDetalhe extends Component {
                         url:res.data.url,
                         readableSize:filesize(res.data.size)
 
+
                     })
+
+                    this.setState({loading:false})
                 })
                 .catch(()=>{
                     this.updateFile(uploadFile.id,{
                         error:true
                     })
+
+                    this.setState({loading:false})
                 })
     }
 
@@ -214,44 +244,53 @@ export default class ProdDetalhe extends Component {
     render(){
         
         
-        const {produto, uploadedFiles} = this.state;
-        
-
-        
-   
+        const {produto, uploadedFiles, fotos} = this.state;
+     
         return(
 
 
             <Fragment>
+               
+                <Menu/>
+                
+               {this.state.loading && (
+                   
+                    <ReactLoading type='bars' color='#fff' height={'10rem'} width={'10rem'} />    
+               )} 
+                
 
-          
-            <Upload  onUpload={this.handleUpload}
+        {!this.state.loading && !!fotos.length && (
+               
+        <ListaProd 
+            prod={produto}
+
+            type1="button" 
+            type2="button"
+        onClick1={this.deletarProd}
+        onClick2={this.EditarProd}
+        textButton1="Deletar"
+        textButton2="Editar"
+
+        bt1bgcolor="#ff0000"
+        bt2bgcolor="#0040ff"
+
+        bt1txtcolor="#ffffff"
+        bt2txtcolor="#ffffff"
+
+        fotos={fotos}
+
+            />
+
+        )}
+         
+      
+     
+    
+     <Upload  onUpload={this.handleUpload}
                 files={uploadedFiles}
                 onDelete={this.deletarFoto}
             />
-          
-         
-       <ListaProd 
-             prod={produto}
-           
-             type1="button" 
-             type2="button"
-             onClick1={this.deletarProd}
-             onClick2={this.EditarProd}
-             textButton1="Deletar"
-             textButton2="Editar"
-
-             bt1bgcolor="#ff0000"
-             bt2bgcolor="#0040ff"
              
-             bt1txtcolor="#ffffff"
-             bt2txtcolor="#ffffff"
-             
-         
-         />
-     
-    
-     
       
             </Fragment>
            
