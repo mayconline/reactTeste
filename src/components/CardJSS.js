@@ -13,7 +13,8 @@ export const Card = styled.div`
 export const Content = styled.div`
 
     width:100%;
-    max-width:400px;
+    max-width:720px;
+   
     margin:0.5rem;
     background:#fff;
     border-radius:0.5rem;
@@ -63,9 +64,26 @@ export const CardHeader = styled.div`
 export const CardContent = styled.div`
     background-color:#E0FFFF;
     border:none;
+
+
+
+    img{
+                    display:flex;
+                    align-self:center; 
+                    align-items:center;
+                   
+                    width:100%;
+                    max-width:400px;
+                    max-height:450px;
+                    padding:0.2rem;
+                   
+
+                }
    
    ul{
     margin-top:0;
+
+
         li{
            display:flex;
             justify-content:space-between;
@@ -76,14 +94,14 @@ export const CardContent = styled.div`
                     margin-top:15px;
                 };
 
-                img{
+               /* img{
                     display:flex;
                     align-self:center; 
                     align-items:center;
                     flex-direction:column;
                     width:100%;
                     max-width:400px;
-                };
+                };*/
 
         }
    };

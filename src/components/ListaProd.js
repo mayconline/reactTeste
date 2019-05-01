@@ -6,14 +6,15 @@ import {Button} from './ButtonJSS';
 import {distanceInWords} from 'date-fns';
 import pt from 'date-fns/locale/pt';
 
+
+
+import Slider  from 'react-slick';
+
+
 export default class Prod extends Component{
    
 
-   /* listagemTela = ()=>{
-        return this.props.prod.fotos.map(foto =>(
-            foto.url
-        ))
-   };*/
+   
 
 
     render(){
@@ -28,7 +29,39 @@ export default class Prod extends Component{
                 bt1, bt2} = this.props
 
             
-           
+        const settings = {
+          
+            focusOnSelect: true,
+            pauseOnHover: true,
+            lazyLoad: true,
+            adaptiveHeight: true,
+            autoplay: true,
+            autoplaySpeed: 2000,
+            cssEase: "linear",
+                    dots: false,
+                    infinite: true,
+                    speed: 500,
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                    initialSlide: 0,
+                        responsive:[
+                            {
+                                breakpoint: 1024,
+                                settings: {
+                                  slidesToShow: 2,
+                                  slidesToScroll: 1,
+                                
+                                }
+                              },                            
+                                 {
+                                breakpoint: 480,
+                                settings: {
+                                  slidesToShow: 1,
+                                  slidesToScroll: 1
+                                }
+                              }
+                        ]
+                  };    
                 
 
         return (
@@ -44,23 +77,43 @@ export default class Prod extends Component{
                                
                             </CardHeader>
                             <CardContent>
-                                   
-                            <ul >
-                              {fotos &&
-                                    fotos.map(foto => (
-                                      
-                                            <li key={foto._id}>
-                                            <img  src={foto.url} alt={foto.name} ></img> 
-                                            </li>
 
-                                       
+                                 <Slider {...settings}>
+                                    
+                                    {fotos &&
+                                        fotos.map(foto=>(
+
+                                         
+                                                 <img src={foto.url} alt={foto.name} key={foto._id}/>
                                       
-                                    ))
-                                        
-                                        }  
-                                         </ul>
-              
-                             
+                                       
+                                    ))}
+
+                                  
+                                  
+
+                                </Slider>  
+
+                               {/*   <ul >
+                            
+                            {fotos &&
+                                  fotos.map(foto => (
+                                    
+                                          <li key={foto._id}>
+                                          <img  src={foto.url} alt={foto.name} ></img> 
+                                          </li>
+
+                                     
+                                    
+                                  ))
+                                      
+                                      }  
+                                       </ul>
+            
+                           */ } 
+                              
+
+                          
                          
                             </CardContent>
                             <CardFooter>

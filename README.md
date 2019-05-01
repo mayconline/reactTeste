@@ -16,6 +16,9 @@
 
 "npm install filesize - para converter pra mb o tamanho doarquivo"
 
+"utilizado react-slick para slides de fotos -
+https://react-slick.neostack.com/docs/example/custom-slides "
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
