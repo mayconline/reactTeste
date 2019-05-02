@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Header = styled.div`
   
-  padding:0.5rem;
+  padding:0.25rem;
 
   
  
@@ -15,7 +15,7 @@ export const Header = styled.div`
     width:100%;
     max-width:400px;
     height:70vh;
-  
+    padding:0.25rem;
     
                 }
 

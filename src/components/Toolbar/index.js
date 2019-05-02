@@ -1,20 +1,39 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import{Link} from 'react-router-dom';
 
 import BotaoToogle from '../ToogleButton';
-import {Header} from './styled';
+import {Header, TopHeader, ToogleMenu}  from './styled';
 
 
-import { FaBirthdayCake, FaKey ,FaMapMarkedAlt,
+import { FaBirthdayCake, FaMapMarkedAlt,
      FaTools, FaRegAddressCard, FaRegCommentDots,
-     FaSearch} from "react-icons/fa";
+     FaSearch, FaFacebookF,
+     FaInstagram, FaWhatsapp, 
+     FaBars} from "react-icons/fa";
  
 const Toolbar = props =>(
-    <Header> 
-        <nav className='toolbar_navigation'>
-            <div className='toolbar_toogle_button'>
-                <BotaoToogle click={props.sideMenuClick}/>
+    <Fragment>
+        <TopHeader >
+            <div className='social_bar'>                
+            <a href="/"><FaFacebookF color={'#000'} size={20}/></a>
+            <a href="/"><FaInstagram color={'#000'} size={20}/></a>
+            <a href="/"><FaWhatsapp color={'#000'} size={20}/></a>
             </div>
+
+            <div className='admin_area'>
+            <ul>
+                <li> <Link to="/admin/login"  className='login'> ENTRAR</Link></li>
+                <li > <Link to="/" className='register' > REGISTRAR</Link></li>
+            </ul>
+            </div>
+        </TopHeader>
+
+
+        <Header> 
+        <nav className='toolbar_navigation'>
+
+        
+
             <div />
             <div className='toolbar_navigation_item'>
                 <ul>
@@ -35,11 +54,31 @@ const Toolbar = props =>(
                 <li><Link to="/produtos" > <FaBirthdayCake size={30}/> <p>PRODUTOS</p></Link></li>
                 <li><Link to="/admin/produtos/cadastro"><FaTools size={30}/><p>CADASTRAR</p></Link></li>
                 <li><Link to="/"><FaSearch size={30}/><p>BUSCAR</p></Link></li>
-                <li><Link to="/admin/login" > <FaKey size={30} /><p>LOGIN</p></Link></li>
+                
                 </ul>
             </div>
+
+            
+           
+    
         </nav>
+        
+      
     </Header>
+
+    <ToogleMenu >
+            <button onClick={props.sideMenuClick}>
+            <FaBars color={'#E54B4D'} size={30}/>
+            <p>MENU</p>
+            </button>
+        
+        </ToogleMenu>
+    
+           
+        
+
+    </Fragment>
+
 );
 
 export default Toolbar;

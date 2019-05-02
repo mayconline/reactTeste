@@ -43,7 +43,7 @@ export const SideMenu = styled.div`
     color: orange;
 }
 
-@media(min-width:500px){
+@media(min-width:1025px){
     .side_menu{
         display: none;
     }
