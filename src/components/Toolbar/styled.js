@@ -173,6 +173,7 @@ padding:0;
                     color:#fff;
                     border:none;
                     display: inline-block;
+                    border:solid 0.1rem transparent; 
                 }
            }
     }
@@ -183,8 +184,8 @@ padding:0;
 export const ToogleMenu = styled.header`
     
     
-    padding: 0.25rem 0.75rem;
-    margin-top:0.25rem;
+    
+    margin:0.5rem;
     display:flex;
     justify-content:center;
     
@@ -194,7 +195,7 @@ export const ToogleMenu = styled.header`
         display:flex;
         justify-content:center;
         cursor: pointer;
-        padding: 0.25rem 0.75rem;
+        padding: 0.25rem 0.25rem;
         background:#fff;
         width:100%;
 

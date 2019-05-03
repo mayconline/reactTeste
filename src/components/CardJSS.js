@@ -137,13 +137,3 @@ export const CardFooter = styled.div`
     `;
 
 
-export const Title = styled.h1`
-
-
-    text-align:center;
-    background:orange;
-    padding:1rem;
-    color:#f00;
-    margin:0.5rem 0;
-  
-`;

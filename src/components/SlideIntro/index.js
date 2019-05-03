@@ -45,6 +45,7 @@ export default class SlideIntro extends Component {
         return(
 
             <Fragment>
+                
                  
                 <Header>
                   
@@ -53,8 +54,12 @@ export default class SlideIntro extends Component {
                  {fotos &&
                                         fotos.map(foto=>(
 
+                                          <figure>
+                                            <img src={foto.url} alt={foto.name} key={foto._id}/>
+                                            <figcaption>{foto.name}</figcaption>
+                                          </figure>
                                          
-                                                 <img src={foto.url} alt={foto.name} key={foto._id}/>
+                                                 
                                       
                                        
                                     ))}

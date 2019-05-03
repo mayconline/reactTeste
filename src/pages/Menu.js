@@ -28,19 +28,23 @@ render(){
 
   /*setando o componente de side menu dentro de uma variavel*/
       
- let backdrop;
+ /*let backdrop;
 
   if(this.state.sideMenuOpen) {
           
    backdrop=<Backdrop onClick={this.backdropHandler}/>;
-     };
+     };*/
   
    
       return(
         <Fragment>
             <Toolbar sideMenuClick={this.botaoToogleHandler}/>
             <SideMenu show={this.state.sideMenuOpen} />
-             {backdrop}
+             
+             {this.state.sideMenuOpen &&
+            <Backdrop onClick={this.backdropHandler}/>
+                }
+            
         </Fragment>    
       )
       }
