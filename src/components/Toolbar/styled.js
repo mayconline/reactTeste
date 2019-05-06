@@ -2,11 +2,16 @@ import styled from 'styled-components';
 
 export const Header = styled.header`
 
-background:#FF2525;
+/*background:#FF2525;*/
+
+background: #e52d27;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to left, #b31217, #e52d27);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to left, #b31217, #e52d27); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 display:flex;
 
 flex-wrap:wrap;
-border-bottom: 0.5rem solid orange ;
+border-bottom: 0.5rem solid #D1913C ;
 border-top: 0.5rem solid orange ;
 
     nav{

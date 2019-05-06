@@ -2,18 +2,20 @@ import styled from 'styled-components';
 
 export const Title = styled.header`
 
- background:#fff;
+ 
  padding:1rem;
  margin:0.5rem;
 
- -webkit-box-shadow: 2px 2px 7px 0px rgba(138,134,138,0.2);
--moz-box-shadow: 2px 2px 7px 0px rgba(138,134,138,0.2);
-box-shadow: 2px 2px 7px 0px rgba(138,134,138,0.2);
+
 
   h1{
     text-align:center;     
     color:#f00;
     margin:0.5rem;
+
+    text-shadow: 1px 1px 1px orange;
+
+    
 
                  &::after, &::before{
                   content:'';

@@ -56,7 +56,7 @@ export default class SlideIntro extends Component {
 
                                           <figure>
                                             <img src={foto.url} alt={foto.name} key={foto._id}/>
-                                            <figcaption>{foto.name}</figcaption>
+                                            
                                           </figure>
                                          
                                                  

@@ -14,8 +14,8 @@ export const Header = styled.section`
                    
     width:100%;
     max-width:400px;
-    height:50vh;
-    padding:0.25rem;
+    height:70vh;
+    padding: 0.5rem 0.25rem;
     border-style: none;
    
     
