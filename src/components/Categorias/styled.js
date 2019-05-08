@@ -6,6 +6,9 @@ export const Section = styled.section`
 margin:0.5rem;
 padding:0.5rem;
 
+
+
+
 `;
 
 export const Categories = styled.article`
@@ -42,6 +45,8 @@ export const Categories = styled.article`
                    text-decoration: none;  
                    display: flex;
               justify-content:center;
+
+
                }
 
    } 

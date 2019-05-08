@@ -3,6 +3,7 @@ import React, {Component, Fragment} from 'react';
 import SlideIntro from '../../components/SlideIntro';
 import Jumbotron from '../../components/Jumbotron';
 import Categorias from '../../components/Categorias';
+import Delivery from '../../components/Delivery';
 
 import Menu from '../Menu';
 import api from '../../services/api';
@@ -27,6 +28,7 @@ export default class Main extends Component {
             <SlideIntro fotos={this.state.fotos}/>
             <Jumbotron/>
             <Categorias/>
+            <Delivery/>
         </Fragment>
         
         

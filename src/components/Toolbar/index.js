@@ -26,6 +26,8 @@ const Toolbar = props =>(
                 <li > <Link to="/" className='register' > REGISTRAR</Link></li>
             </ul>
             </div>
+
+           
         </TopHeader>
 
 
