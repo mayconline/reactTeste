@@ -130,6 +130,10 @@ export default class ProdDetalhe extends Component {
         
     }
 
+    visuProd = (url)=>{
+      return; 
+    }
+
 
     //cria um novo array add aos dados da foto novos campos//
     handleUpload = (files) => {
@@ -278,6 +282,7 @@ export default class ProdDetalhe extends Component {
         bt2txtcolor="#ffffff"
 
         fotos={fotos}
+        detalhar={this.visuProd}
 
             />
 

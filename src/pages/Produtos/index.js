@@ -1,12 +1,13 @@
 import React, {Component, Fragment} from 'react';
 
-import api from '../services/api';
+import api from '../../services/api';
 import socket from 'socket.io-client';
+import {Section} from './styled';
 
-import ListaProd from '../components/ListaProd';
-import Menu from './Menu';
+import ListaProd from '../../components/ListaProd';
+import Menu from '../Menu';
 
-import {Container, Col, Row} from '../components/GridJSS';
+import {Container, Col, Row} from '../../components/GridJSS';
 
 
 
@@ -58,6 +59,7 @@ export default class Produtos extends Component {
                          <ListaProd prod={prod}
                type="button" 
                onClick1={this.DetalharProd} 
+               detalhar={this.DetalharProd}
                value1={prod._id}
                textButton1="Selecionar"
                bt1bgcolor="#009933"
@@ -70,13 +72,15 @@ export default class Produtos extends Component {
        };
    
    
-
-
-
-    DetalharProd = async (e) => {
-          await  this.setState({prodId:e.target.value});
-         await this.props.history.push(`/produtos/${this.state.prodId}`)
+       DetalharProd = async (_id)=>{
+        await this.props.history.push(`/produtos/${_id}`)
        }
+
+/*
+    DetalharProd = async (e) => {
+         await  this.setState({prodId:e.target.value});
+         await this.props.history.push(`/produtos/${this.state.prodId}`)
+    }*/
 
 
 
@@ -86,9 +90,18 @@ export default class Produtos extends Component {
 
         
         
-        return (
-            <Fragment>
-   <Menu/>
+    return ( 
+        <Fragment>
+        <Menu/>
+        <Section>
+         {this.listagemTela()}
+        </Section>
+         </Fragment>  
+
+      
+        
+        /*
+        
   
                 <Container>
                     <Row>
@@ -104,6 +117,8 @@ export default class Produtos extends Component {
                      </Row>
                 </Container>      
             </Fragment>    
+        */
+           
         );
     }
 }
