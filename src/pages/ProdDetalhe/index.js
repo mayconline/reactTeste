@@ -1,14 +1,16 @@
 import React, {Component, Fragment} from 'react';
-import api from '../services/api';
+import api from '../../services/api';
 
-import Upload from '../components/Upload';
+import {Loading} from './styled';
+
+import Upload from '../../components/Upload';
 import socket from 'socket.io-client';
 
 import {uniqueId} from 'lodash';
 import filesize from 'filesize';
 
-import ListaProd from '../components/ListaProd';
-import Menu from './Menu';
+import ListaProd from '../../components/ListaProd';
+import Menu from '../Menu';
 
 import ReactLoading from 'react-loading';
 
@@ -259,7 +261,10 @@ export default class ProdDetalhe extends Component {
                 
                {this.state.loading && (
                    
-                    <ReactLoading type='bars' color='#fff' height={'10rem'} width={'10rem'} />    
+                   <Loading>
+                        <ReactLoading type='bars' color='#000' height={'10rem'} width={'10rem'} />    
+                   </Loading>
+                   
                )} 
                 
 

@@ -20,13 +20,13 @@ export const Card = styled.div`
     
   }
 
-    cursor: pointer;
+   
     
 `;
 
 export const Content = styled.div`
 
-    margin:0.5rem;
+margin:0.5rem;
  width:100%;
  max-width:328px;
    
@@ -53,24 +53,63 @@ export const CardContent = styled.div`
                     width:100%;
                    
                     max-height:450px;
-                    
+                    cursor: pointer;
                    
                 }
+
+                section{
+                    display:flex;
+                    justify-content:space-between;
+                }
+
+                figcaption{
+
+                    display:flex;
+                    justify-content:space-between;
+                    flex-direction:column;
+                 padding:0.5rem;
+                 color:orangered;
+                
+                 font-weight:bold;
+                 font-size:1.2rem;
+                 
+                 h3{
+                    text-shadow: 1px 1px 1px orange;
+                 }
+                        span{
+                            font-size:0.7rem;
+                            padding:0.5rem auto;
+                            color:#999;
+                        }
+                  }
    
-  
+                  div{
+                    display:flex;
+                    justify-content:flex-end;
+                   flex-direction:row;
+                    
+                    a{
+                        color: #444;
+                        margin-top:1rem;
+
+                        &:hover{
+                            opacity:0.7;
+                        }
+                    }
+                  }
 
     
 `;
 
 export const CardFooter = styled.div`
-    background-color:orangered;
-    color:#fff;
+    background-color:#fff;
+    color:orangered;
             display:flex;
             justify-content:space-between;
             flex-direction:column;
             flex-wrap:wrap;
     
-    padding:1rem;
+            padding:1rem;
     text-align:center;
 
         button{
@@ -78,6 +117,7 @@ export const CardFooter = styled.div`
          
         }
        
+        
     `;
 
 
@@ -98,7 +138,7 @@ justify-content:space-between;
             font-size:0.9rem;
            padding:0.5rem;
            
-          color:#fff;
+          color:orangered;
             
            
         }
@@ -107,7 +147,7 @@ justify-content:space-between;
             font-weight:bold;
             padding:0.5rem; 
             
-           color:#fff;
+           color:orangered;
            
            
         }

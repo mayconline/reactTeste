@@ -6,9 +6,6 @@ margin-top:0.5rem;
 
 column-count:4;
 
-        @media(max-width:768px){
-            column-count:3;
-        }
 
     @media(max-width:400px){
         column-count:1;

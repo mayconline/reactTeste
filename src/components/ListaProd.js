@@ -1,6 +1,8 @@
 import React, {Component, Fragment} from 'react';
 
 import {Card, CardHeader, CardContent, CardFooter, Content, Description} from './CardJSS';
+
+import{MdLink} from 'react-icons/md';
 import {Button} from './ButtonJSS';
 
 import {distanceInWords} from 'date-fns';
@@ -28,7 +30,7 @@ export default class Prod extends Component{
           <Fragment>
 
                
-               <Card  onClick={()=>{detalhar(value1)}} >
+               <Card   >
                             <Content>
   
                             
@@ -39,40 +41,47 @@ export default class Prod extends Component{
                                     {fotos &&
                                         fotos.map(foto=>(
 
-                                         
-                                                 <img src={foto.url} alt={foto.name} key={foto._id}/>
-                                      
+                                                <figure >
+                                                     <img src={foto.url} alt={foto.name} key={foto._id}
+                                                     onClick={()=>{detalhar(value1)}}
+                                                     />
+
+                                                     <section>
+                                                     <figcaption>
+                                                        <h3>{titulo}</h3>
+                                                        <span> Há {distanceInWords(createdAt, new Date(), {locale:pt})} </span>
+                                                     </figcaption>
+
+                                                     <div>
+                                                    <a href={foto.url}
+                                                         target='_blank'
+                                                        rel='noopener noreferrer'
+                                                            >
+                                                         <MdLink style={{marginRight:8}}  size={24} color='#222'/>
+                                                         </a>
+                                                    </div>
+                                                     
+
+                                                     </section>
+
+                                                </figure>
+                                                
                                        
                                     ))}        
 
                               
                          
                             </CardContent>
-                            <CardFooter>
-
-                    
-                    <CardHeader>
-                    <h1>{titulo}</h1>
-
-                                                       
-                    <span> Há {distanceInWords(createdAt, new Date(), {locale:pt})} </span>
-                      
-
-                    </CardHeader>
-                            
                           
-                      
-                      <Description>
+                           {/*  <CardFooter>     
+                     <Description>
                               
                                 <strong>descricao: {descricao}</strong>
                                 <span>Valor: {valor} </span>                    
-
-                      </Description>
-                               
-
-
-                                            
-                                <div>
+                      </Description>*/}
+                     
+                            {/*
+                              <div>
                            <Button
                                 bt1bgcolor={bt1bgcolor}
                                 bt1txtcolor={bt1txtcolor}
@@ -95,12 +104,7 @@ export default class Prod extends Component{
                                 {textButton2}
                             </Button>
                            </div>
-
-
-                        
-
-         
-                            </CardFooter>
+                            </CardFooter>*/} 
                             </Content>
                         </Card>
 
