@@ -4,14 +4,14 @@ import api from '../../services/api';
 import {Loading} from './styled';
 
 import Upload from '../../components/Upload';
-import socket from 'socket.io-client';
-
-import {uniqueId} from 'lodash';
-import filesize from 'filesize';
-
+import Modal from '../../components/Modal';
 import ListaProd from '../../components/ListaProd';
 import Menu from '../Menu';
 
+
+import socket from 'socket.io-client';
+import {uniqueId} from 'lodash';
+import filesize from 'filesize';
 import ReactLoading from 'react-loading';
 
 
@@ -22,6 +22,7 @@ export default class ProdDetalhe extends Component {
         fotos:[],
         uploadedFiles:[],
         loading:false,
+      
     
         
     }
@@ -224,6 +225,13 @@ export default class ProdDetalhe extends Component {
 
 
 
+    
+AbrirModal =()=>{
+    this.setState((prevState)=>{
+      return {ModalOpen:!prevState.ModalOpen};
+    })
+  };
+
 
     /*
     inserirFoto = async (files) =>{
@@ -250,7 +258,7 @@ export default class ProdDetalhe extends Component {
     render(){
         
         
-        const {produto, uploadedFiles, fotos} = this.state;
+        const {produto, uploadedFiles, fotos, ModalOpen} = this.state;
      
         return(
 
@@ -293,7 +301,8 @@ export default class ProdDetalhe extends Component {
 
         )}
          
-      
+         
+      <Modal />
      
     
      <Upload  onUpload={this.handleUpload}

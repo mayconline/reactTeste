@@ -5,10 +5,12 @@ import SideMenu from '../components/SideMenu';
 import {Backdrop} from '../components/Backdrop';
 
 
+
 export default class Menu extends Component {
 
 state={
-  sideMenuOpen:false
+  sideMenuOpen:false,
+  AdminBarOpen:false
 }
   
 /*metodo para alterar visibilidade do sidemenu*/
@@ -24,6 +26,18 @@ backdropHandler=()=>{
 };
 
 
+
+AdminBar = ()=>{
+ this.setState((prevState)=>{
+    return {AdminBarOpen:!prevState.AdminBarOpen}
+    
+  })
+
+};
+
+
+
+
 render(){
 
   /*setando o componente de side menu dentro de uma variavel*/
@@ -34,11 +48,18 @@ render(){
           
    backdrop=<Backdrop onClick={this.backdropHandler}/>;
      };*/
-  
+   
    
       return(
         <Fragment>
-            <Toolbar sideMenuClick={this.botaoToogleHandler}/>
+        
+            <Toolbar sideMenuClick={this.botaoToogleHandler}
+              
+              AdminOpen={this.AdminBar}
+              AdminBarState={this.state.AdminBarOpen}          
+            />
+           
+           
             <SideMenu show={this.state.sideMenuOpen} />
              
              {this.state.sideMenuOpen &&

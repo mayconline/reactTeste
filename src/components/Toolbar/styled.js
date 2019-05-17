@@ -8,29 +8,30 @@ background: #e52d27;  /* fallback for old browsers */
 background: -webkit-linear-gradient(to left, #b31217, #e52d27);  /* Chrome 10-25, Safari 5.1-6 */
 background: linear-gradient(to left, #b31217, #e52d27); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
-display:flex;
 
-flex-wrap:wrap;
-border-bottom: 0.5rem solid #D1913C ;
-border-top: 0.5rem solid orange ;
+border-bottom: 0.25rem solid #D1913C ;
+border-top: 0.25rem solid orange ;
 
     nav{
-    display: flex;
-    justify-content: space-between;
-    flex-wrap:wrap;
-
+        display: flex;
+        justify-content:space-between;
     
 
     align-items: center;
     height: 100%;
-    padding: 0 1rem;
+    padding: 0;
     width: 100%;
+    margin:0;
 
          .toolbar_logo {
-            
-            
+            display:flex; 
+            margin:0 auto;
+            justify-self: center;
+            align-items:center;
+
+          
                 img{
-                    max-height:10rem;
+                    max-height:8rem;
                 }
 
              @media (max-width:500px) {
@@ -44,7 +45,7 @@ border-top: 0.5rem solid orange ;
          .toolbar_navigation_item {
              display: flex;
              justify-self: center;
-
+             align-items:center;
 
 
                     ul {
@@ -108,6 +109,7 @@ display:flex;
 flex-wrap:wrap;
 justify-content:space-between;
 align-items:center;
+align-content:center;
 padding:0;
 
     .social_bar{
@@ -117,6 +119,7 @@ padding:0;
         padding:0.25rem;
 
         a{
+            align-items:center;
             padding: 0.375rem 0.5625rem;
             
             path:hover{
@@ -129,6 +132,7 @@ padding:0;
 
     .admin_area{
        padding:0.25rem;
+
        
            ul{
 
@@ -136,7 +140,11 @@ padding:0;
                 margin: 0;
                 padding: 0;
                 display: flex;
-                flex-wrap: wrap;                         
+                flex-wrap: wrap;      
+
+                    li{
+                        cursor: pointer;
+                    }                   
            }
 
            .login   {
@@ -181,6 +189,7 @@ padding:0;
                     border:solid 0.1rem transparent; 
                 }
            }
+           
     }
 `;
 
