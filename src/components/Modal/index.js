@@ -2,6 +2,8 @@ import React , {Component, Fragment} from 'react';
 
 import {Modal_Container} from './styled';
 
+
+
 export default class Modal extends Component{
 
     state={
@@ -39,12 +41,10 @@ AbrirModal =()=>{
 
                     <div className='modal'>
                   <button className='fechar' onClick={this.fecharModal}>X</button>
-                <h3> Form do Modal</h3>
+                <h3> Modal</h3>
 
-                <form>
-                    <input type='text' />
-                </form>
-
+             
+            
               </div>
 
                     </div>

@@ -302,7 +302,7 @@ AbrirModal =()=>{
         )}
          
          
-      <Modal />
+  
      
     
      <Upload  onUpload={this.handleUpload}

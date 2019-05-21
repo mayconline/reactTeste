@@ -6,14 +6,14 @@ export const InputFormJSS= styled.div`
     justify-content:center;
     flex-wrap:wrap;
     
-    flex-direction:row;   
+    flex-direction:column;   
     padding:0.5rem;
    
   
 
    label {
     display:flex;
-    justify-content:center;
+    justify-content:flex-start;
     flex-wrap:wrap;
     padding:0.5rem;
 
@@ -24,6 +24,9 @@ export const InputFormJSS= styled.div`
     justify-content:center;
     flex-wrap:wrap;
     padding:0.5rem;
+    width:100%;
+
+    
     
    
    }

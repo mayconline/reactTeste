@@ -32,6 +32,7 @@ const UploadPreview =({files, onDelete})=>
              
             </FileInfo>
                         
+     
                          
 
             <div>
