@@ -4,7 +4,7 @@ import api from '../../services/api';
 import {Loading} from './styled';
 
 import Upload from '../../components/Upload';
-import Modal from '../../components/Modal';
+
 import ListaProd from '../../components/ListaProd';
 import Menu from '../Menu';
 
@@ -258,7 +258,7 @@ AbrirModal =()=>{
     render(){
         
         
-        const {produto, uploadedFiles, fotos, ModalOpen} = this.state;
+        const {produto, uploadedFiles, fotos} = this.state;
      
         return(
 

@@ -1,5 +1,5 @@
 import React, {Fragment} from 'react';
-import{Link} from 'react-router-dom';
+import{Link, NavLink} from 'react-router-dom';
 
 
 import {Header, TopHeader, ToogleMenu}  from './styled';
@@ -50,14 +50,18 @@ const Toolbar = ({AdminOpen, AdminBarState, sideMenuClick}) =>(
             <Link to="/"> <img src='https://res.cloudinary.com/apinodeteste/image/upload/v1556741879/ZuzuCake/Logo/zuzuLogo_x0crgs.png' alt='ZuzuCakes' /></Link>   
                  </div>
           
+
+          {/*activeClassName=selected coloca a classe automatica*/}
                    
             <div className='toolbar_navigation_item'>
                 <ul>
-                <li><Link to="/"><FaRegAddressCard size={30}/><p>QUEM SOMOS</p></Link></li>
-                <li><Link to="/"> <FaMapMarkedAlt size={30}/><p>LOCALIZAÇÃO</p></Link></li>
-                <li><Link to="/"><FaRegCommentDots size={30}/><p>CONTATO</p></Link></li>
-                <li><Link to="/produtos" > <FaBirthdayCake size={30}/> <p>PRODUTOS</p></Link></li>               
-                <li><Link to="/"><FaSearch size={30}/><p>BUSCAR</p></Link></li>
+                <li><NavLink to="/" exact ><FaRegAddressCard size={30}/><p>QUEM SOMOS</p></NavLink></li>
+                <li><a href="/#map" rel='noopener noreferrer'><FaMapMarkedAlt size={30}/><p>LOCALIZAÇÃO</p></a></li>
+                <li><NavLink to="/" exact ><FaRegCommentDots size={30}/><p>CONTATO</p></NavLink></li>
+                <li><NavLink to="/produtos" exact activeClassName="selected"> <FaBirthdayCake size={30}/> <p>PRODUTOS</p></NavLink></li>               
+                <li><NavLink to="/" exact ><FaSearch size={30}/><p>BUSCAR</p></NavLink></li>
+              
+                
                 
                 </ul>
             </div>

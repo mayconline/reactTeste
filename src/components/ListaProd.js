@@ -1,9 +1,9 @@
 import React, {Component, Fragment} from 'react';
 
-import {Card, CardHeader, CardContent, CardFooter, Content, Description} from './CardJSS';
+import {Card,CardContent, Content} from './CardJSS';
 
 import{MdLink} from 'react-icons/md';
-import {Button} from './ButtonJSS';
+
 
 import {distanceInWords} from 'date-fns';
 import pt from 'date-fns/locale/pt';
@@ -15,14 +15,8 @@ export default class Prod extends Component{
 
     render(){
            
-        const {titulo, descricao, valor, createdAt, } = this.props.prod;
-        const { type1,type2,
-                onClick1, onClick2,
-                textButton1, textButton2, 
-                value1, value2,
-                bt1bgcolor, bt1txtcolor,
-                bt2bgcolor, bt2txtcolor, 
-                bt1, bt2, fotos, detalhar} = this.props
+        const {titulo, createdAt } = this.props.prod;
+        const { value1, fotos, detalhar} = this.props
 
   
         return (

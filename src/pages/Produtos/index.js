@@ -7,7 +7,7 @@ import {Section} from './styled';
 import ListaProd from '../../components/ListaProd';
 import Menu from '../Menu';
 
-import {Container, Col, Row} from '../../components/GridJSS';
+
 
 
 

@@ -54,8 +54,8 @@ export default class SlideIntro extends Component {
                  {fotos &&
                                         fotos.map(foto=>(
 
-                                          <figure>
-                                            <img src={foto.url} alt={foto.name} key={foto._id}/>
+                                          <figure key={foto._id}>
+                                            <img src={foto.url} alt={foto.name} />
                                             
                                             
                                           </figure>

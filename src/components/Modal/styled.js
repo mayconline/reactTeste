@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Modal_Container = styled.section`
+export const ModalContainer = styled.section`
 /*
 width:100vw;
 height:100vh;*/

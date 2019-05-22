@@ -1,6 +1,6 @@
 import React , {Component, Fragment} from 'react';
 
-import {Modal_Container} from './styled';
+import {ModalContainer} from './styled';
 
 
 
@@ -36,7 +36,7 @@ AbrirModal =()=>{
 
             <button onClick={this.AbrirModal}>Abrir modal</button>
 
-                <Modal_Container > 
+                <ModalContainer > 
                     <div className={sideClasses}>
 
                     <div className='modal'>
@@ -49,7 +49,7 @@ AbrirModal =()=>{
 
                     </div>
               
-                </Modal_Container>
+                </ModalContainer>
             </Fragment>
           
         )
